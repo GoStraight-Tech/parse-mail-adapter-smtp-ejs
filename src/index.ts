@@ -36,7 +36,16 @@ let MailAdapter = (adapterOptions: AdapterOptionsInterface) => {
             });
 
         }else {
-            throw "Error"
+            let mail = {
+                from: options.from,
+                to: options.to,
+                subject: options.subject,
+                text: options.text || "",
+                html: options.html,
+                attachments: options?.attachments || []
+            };
+
+            return _sendMail(mail, transporter);
         }
     };
 
